@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Roboto-Light.ttf'); /* IE9 Compat Modes */
+    src: local('Open Sans'), local('OpenSans'),
+         url('../fonts/Roboto-Light.ttf') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/Roboto-Light.ttf') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/Roboto-Light.ttf') format('woff'), /* Modern Browsers */
+         url('../fonts/Roboto-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/Roboto-Light.ttf') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'Amatic SC';
+  font-style: bold;
+  font-weight: 700;
+  src: url('../fonts/AmaticSC-Bold.ttf'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans'),
+        url('../fonts/AmaticSC-Bold.ttf') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/AmaticSC-Bold.ttf') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/AmaticSC-Bold.ttf') format('woff'), /* Modern Browsers */
+        url('../fonts/AmaticSC-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/AmaticSC-Bold.ttf') format('svg'); /* Legacy iOS */
+}
+html {
+    height: 100%;
+}
+body {
+    font-family: 'Roboto';
+    min-height: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
