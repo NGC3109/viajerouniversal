@@ -11,10 +11,13 @@ const stylesMobile = {
 }
 
 const Footer = () => (
-    <footer style={widthScreen === 1 ? stylesMobile : stylesWeb} className="footer navbar-fixed-bottom py-4 bg-light text-black-50">
-        <div className="container text-center">
-            <small><label style={{color: 'white'}}>Copyright &copy; 2022 -</label> <Link to="/terminos_y_condiciones">Términos y Condiciones</Link> <label style={{color: 'white'}}>-</label> <Link to="/politicas">Políticas de Privacidad</Link> <label style={{color: 'white'}}>-</label> <strong><a href={"https://www.instagram.com/viajero.universal_"} rel="noopener noreferrer" target="_blank">@viajero.universal_</a></strong></small>
-        </div>
-    </footer> 
+    <>
+        <div style={{height: widthScreen === 12 ? 0 : 66}}></div>
+        <footer style={widthScreen === 1 ? stylesMobile : stylesWeb} className="footer navbar-fixed-bottom py-4 bg-light text-black-50">
+            <div className="container text-center">
+                <small><label style={{color: 'white'}}>Copyright &copy; 2022 -</label> <Link to="/terminos_y_condiciones">Términos y Condiciones</Link> <label style={{color: 'white'}}>-</label> <Link to="/politicas">Políticas de Privacidad</Link> <label style={{color: 'white'}}>-</label> <strong><a href={"https://www.instagram.com/viajero.universal_"} rel="noopener noreferrer" target="_blank">@viajero.universal_</a></strong></small>
+            </div>
+        </footer> 
+    </>
 )
 export default Footer
