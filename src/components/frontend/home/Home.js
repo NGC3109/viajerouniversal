@@ -270,7 +270,6 @@ export default class Home extends Component {
                     )
                 }
         </Carousel>
-        <div style={{height: widthScreen === 12 ? 0 : 66}}></div>
         <Snackbar open={this.state.open} autoHideDuration={6000} onClose={() => this.handleShow}>
         <Alert onClose={this.handleShow} severity="error">
             Debes registrarte!
