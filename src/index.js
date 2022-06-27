@@ -15,8 +15,8 @@ import Perfil from './components/frontend/user/Perfil';
 import EditPublic from './components/frontend/user/publicaciones/editPublic';
 import Colaborativo from './components/frontend/colaborativo/Colaborativo';
 import PerfilPublico from './components/frontend/publico/PerfilPublico';
-import Actividades from './components/frontend/actividades/Actividades.js';
-import DetailActividades from './components/frontend/actividades/DetailActividades.js';
+import Actividades from './components/frontend/actividades/';
+import Detail from './components/frontend/actividades/indexDetail';
 import Hospedajes from './components/frontend/hospedajes/Hospedajes.js';
 import DetailHospedajes from './components/frontend/hospedajes/DetailHospedajes.js';
 import EditarHospedaje from './components/frontend/user/hospedaje/EditHospedaje';
@@ -32,7 +32,7 @@ ReactDOM.render(<HashRouter>
                         <Route path="/publicaciones" component={Publicaciones} />
                         <Route path="/actividades" component={Actividades} />
                         <Route path="/destinos" component={Destinos} />
-                        <Route path="/actividad/:idActividad" component={DetailActividades} />
+                        <Route path="/actividad/:idActividad" component={Detail} />
                         <Route path="/destino/:idDestino" component={DetailDestinos} />
                         <Route path="/publicacion/:idPublic" component={DetailPublic} />
                         <Route path="/editarPublicacion/:idPublic" component={EditPublic} />
