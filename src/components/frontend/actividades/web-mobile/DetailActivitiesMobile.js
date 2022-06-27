@@ -9,154 +9,20 @@ import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import firebase from 'firebase/app'
 // import Rating from '@material-ui/lab/Rating';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
-import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ShowMoreText from 'react-show-more-text';
-import CardHeader from '@material-ui/core/CardHeader';
-import { red } from '@material-ui/core/colors';
 import ContactForm from '../../container/ContactForm';
 import './../styles-custom.css';
+import Hospedajes from '../elements/Hospedajes'
+import Comments from '../elements/Comments'
+import TabPanel from '../elements/TabPanel'
 
-const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box p={3} style={{padding: 0}}>{children}</Box>}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: '100%'
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-}));
-const Comments = (props) => {
-  const classes = useStyles();
-  const comment = props.data
-  return(
-    <div className={classes.root}>
-            {
-            comment.map((item, i) => 
-                <div key={i}>
-                    <Card className={classes.root}>
-                      <CardHeader
-                        avatar={
-                          <Avatar aria-label="recipe" src={item.thumbnail} className={classes.avatar} />
-                        }
-                        title={item.name}
-                        subheader={item.fecha_publicacion}
-                      />
-                      <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {item.comentario.length >= 200 ? 
-                            <ShowMoreText
-                                lines={2}
-                                more={<ExpandMoreIcon />}
-                                less={<ExpandLessIcon />}
-                                anchorClass=''
-                                onClick={props.executeOnClick}
-                                expanded={false}
-                            >
-                              {item.comentario.split('\n').map((itemX, keyX) => {
-                                return <span key={keyX}>{itemX}<br/></span>
-                              })}
-                            </ShowMoreText>
-                            :
-                              item.comentario.split('\n').map((itemX, keyX) => {
-                                return <span key={keyX}>{itemX}<br/></span>
-                              })
-                            }
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                </div>
-            )}
-        </div>
-  )
-}
-const Hospedajes = (props) => {
-  const Dhospedajes = props.data
-  return(
-    <Grid
-        container
-        direction="row"
-        justify="flex-start"
-        alignItems="stretch"
-      >
-            {
-            Dhospedajes.map((item, i) => 
-            item.estado === "1" ? 
-                <div key={i}>
-                    <Card style={{maxWidth: 345, margin: '2%', minWidth: 345}}>
-                      <CardActionArea>
-                        <div style={{
-                            backgroundImage: "url(" + item.thumbnail + ")",
-                            backgroundPosition: 'center',
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat',
-                            width: '100%',
-                            height: 250
-                            }}>
-                        </div>
-                        <CardContent>
-                        {item.name.length <= 28 ?
-                          <Typography gutterBottom variant="h5" component="h2">
-                            {item.name}
-                          </Typography> 
-                        : item.name.length >= 37 ?
-                          <Typography gutterBottom variant="h6" component="h5">
-                            {item.name.substr(0,36)} ...
-                          </Typography>
-                          :
-                          <Typography gutterBottom variant="h6" component="h4">
-                            {item.name}
-                          </Typography>
-                        }
-                        {item.descripcion.length <= 238 ? 
-                          <Typography variant="body2" color="textSecondary" component="p">
-                            {item.descripcion}
-                          </Typography>
-                        :
-                          <Typography variant="body2" color="textSecondary" component="p">
-                            {item.descripcion.substr(0,238)} ...[]
-                          </Typography> 
-                        }
-                          
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                </div>
-            : null
-            )}
-    </Grid>
-  )
-}
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
@@ -342,7 +208,7 @@ class DetailActividades extends Component {
                     index={this.state.valueComment}
                     onChangeIndex={this.handleChangeIndexComment}
                   >
-                    <TabPanel value={this.state.valueComment} index={0} style={{padding: '0px !important'}}>
+                    <TabPanel value={this.state.valueComment} index={0}>
                       <div>
                           <h5 className="text-center" style={{textDecoration: 'underline'}}>Descripción</h5>
                           <p style={{textAlign: 'justify'}}>{this.state.dataActivities.descripcion}</p>
