@@ -22,6 +22,8 @@ import './../styles-custom.css';
 import Hospedajes from '../elements/Hospedajes'
 import Comments from '../elements/Comments'
 import TabPanel from '../elements/TabPanel'
+import { NO_IMAGE } from '../../helpers/Structure';
+import { ALERT_ACTIVITY_HOSPEDAJE, MORE_INFO, NO_LOGIN } from '../../helpers/Messages';
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -244,7 +246,7 @@ class DetailActividades extends Component {
                         </div>
                       : 
                       <div className="alert alert-info">
-                        <strong>Atención!</strong> Para ver más información debes registrarte, es muy fácil, no debes llenar formuarios, solo dos click hacen falta!.
+                        {MORE_INFO}
                       </div>
                       }
                       {this.state.isOpen && (
@@ -270,21 +272,22 @@ class DetailActividades extends Component {
                             {this.state.dataActivities.url_1 ?
                               <Card.Img onClick={() => this.setState({ isOpen: true })} variant="top" src={this.state.dataActivities.url_1} style={{maxHeight:300}} />
                             : 
-                              <Card.Img variant="top" src="https://firebasestorage.googleapis.com/v0/b/viajeros-a267f.appspot.com/o/funciones%2Fno-image2.png?alt=media&token=04203eaf-1fbd-439b-b2d1-88d227793338" style={{maxHeight:300}} />
+                            
+                              <Card.Img variant="top" src={NO_IMAGE} style={{maxHeight:300}} />
                             }
                           </Card>
                           <Card className="text-center"> 
                             {this.state.dataActivities.url_2 ?
                               <Card.Img onClick={() => this.setState({ isOpen: true })} variant="top" src={this.state.dataActivities.url_2} style={{maxHeight:300}} />
                             : 
-                              <Card.Img variant="top" src="https://firebasestorage.googleapis.com/v0/b/viajeros-a267f.appspot.com/o/funciones%2Fno-image2.png?alt=media&token=04203eaf-1fbd-439b-b2d1-88d227793338" style={{maxHeight:300}} />
+                              <Card.Img variant="top" src={NO_IMAGE} style={{maxHeight:300}} />
                             }
                           </Card>
                           <Card className="text-right">
                             {this.state.dataActivities.url_3 ?
                               <Card.Img onClick={() => this.setState({ isOpen: true })} variant="top" src={this.state.dataActivities.url_3} style={{maxHeight:300}} />
                             : 
-                              <Card.Img variant="top" src="https://firebasestorage.googleapis.com/v0/b/viajeros-a267f.appspot.com/o/funciones%2Fno-image2.png?alt=media&token=04203eaf-1fbd-439b-b2d1-88d227793338" style={{maxHeight:300}} />
+                              <Card.Img variant="top" src={NO_IMAGE} style={{maxHeight:300}} />
                             }
                           </Card>
                       </CardColumns>
@@ -317,7 +320,7 @@ class DetailActividades extends Component {
                               </div>
                               :
                               <div className="alert alert-info">
-                                <strong>Para ver los comentarios debes iniciar sesión, es muy simple, solo dos clicks hacen falta!</strong>
+                                <strong>{NO_LOGIN}</strong>
                               </div>
                               }
                       </TabPanel>
@@ -326,10 +329,7 @@ class DetailActividades extends Component {
               </TabPanel>
               <TabPanel value={this.state.value} index={1}>
                 {this.state.mensajeAlerta ?
-                  <div className="alert alert-info">
-                    <strong>Ups!</strong> No tenemos nada asociado a esta actividad, si tienes un <strong>Hospedaje</strong> desde donde se pueda llegar a realizar esta actividad, <strong>¡inscribelo desde tu perfil!</strong>, si aún no tienes cuenta 
-                    <strong> registrarte es muy fácil</strong>, podrás comenzar a registrar tus servicios, <strong>aparecerán bien ubicados</strong>, justo donde la gente necesita verte.
-                  </div>
+                  ALERT_ACTIVITY_HOSPEDAJE
                 :
                   <Hospedajes data={this.state.dataHospedajes} /> 
                 }
