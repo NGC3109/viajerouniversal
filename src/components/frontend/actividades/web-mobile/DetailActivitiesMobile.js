@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Menu from '../../container/Menu';
 import Helpers from '../../helpers/Helpers'
 import PropTypes from 'prop-types';
-import Card from 'react-bootstrap/Card'
-import CardColumns from 'react-bootstrap/CardColumns'
 import Footer from '../../container/Footer'
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,9 +9,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import firebase from 'firebase/app'
-// import Rating from '@material-ui/lab/Rating';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
@@ -22,8 +17,8 @@ import './../styles-custom.css';
 import Hospedajes from '../elements/Hospedajes'
 import Comments from '../elements/Comments'
 import TabPanel from '../elements/TabPanel'
-import { NO_IMAGE } from '../../helpers/Structure';
 import { ALERT_ACTIVITY_HOSPEDAJE, MORE_INFO, NO_LOGIN } from '../../helpers/Messages';
+import Banner from '../elements/Banner';
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -40,8 +35,6 @@ class DetailActividades extends Component {
       nameUser: '',
       uid: '',
       dataActivities: [],
-      isOpen: false,
-      photoIndex: 0,
       mensajeAlerta: false,
       valueComment: 0,
       dataComments: [],
@@ -184,15 +177,13 @@ class DetailActividades extends Component {
                 <div style={{marginTop: '1%'}}>
                   <h5 style={{ fontWeight: 'bold' }}>{this.state.dataActivities.name}</h5>
                   <p>{this.state.dataActivities.region}</p>
-                  <div onClick={() => this.setState({ isOpen: true })} style={{
-                        backgroundImage: "url(" + this.state.dataActivities.url + ")",
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat',
-                        width: '100%',
-                        height: 250
-                      }}>
-                  </div>
+                  <Banner 
+                    url={this.state.dataActivities.url} 
+                    url_1={this.state.dataActivities.url_1} 
+                    url_2={this.state.dataActivities.url_2} 
+                    url_3={this.state.dataActivities.url_3}
+                    galeria={this.state.galeria}
+                  />
                 <AppBar position="static" color="inherit">
                     <Tabs
                     value={this.state.valueComment}
@@ -215,17 +206,14 @@ class DetailActividades extends Component {
                           <h5 className="text-center" style={{textDecoration: 'underline'}}>Descripción</h5>
                           <p style={{textAlign: 'justify'}}>{this.state.dataActivities.descripcion}</p>
                       </div>       
-                      <div>              
-                        <br />
+                      <div>
                         <h5 className="text-center" style={{textDecoration: 'underline'}}>Recomendaciones</h5>
                         <div style={{borderLeft: '0.2em solid #07737f', paddingLeft: 10}}>
                             <p>{this.state.dataActivities.recomendaciones}</p>
                         </div>
-                        <br />
                       </div>
                       {this.state.dataActivities.dificultad !== undefined ?
                             <div>
-                              <br />
                               <div style={{borderLeft: '0.2em solid #07737f', paddingLeft: 10}}>
                                   <p>Dificultad: {this.state.dataActivities.dificultad}</p>
                               </div>
@@ -249,48 +237,7 @@ class DetailActividades extends Component {
                         {MORE_INFO}
                       </div>
                       }
-                      {this.state.isOpen && (
-                          <Lightbox
-                            mainSrc={this.state.galeria[this.state.photoIndex]}
-                            nextSrc={this.state.galeria[(this.state.photoIndex + 1) % this.state.galeria.length]}
-                            prevSrc={this.state.galeria[(this.state.photoIndex + this.state.galeria.length - 1) % this.state.galeria.length]}
-                            onCloseRequest={() => this.setState({ isOpen: false })}
-                            onMovePrevRequest={() =>
-                              this.setState({
-                                photoIndex: (this.state.photoIndex + this.state.galeria.length - 1) % this.state.galeria.length,
-                              })
-                            }
-                            onMoveNextRequest={() =>
-                              this.setState({
-                                photoIndex: (this.state.photoIndex + 1) % this.state.galeria.length,
-                              })
-                            }
-                          />
-                        )}
-                      <CardColumns style={{marginTop: '4%'}}>
-                          <Card>
-                            {this.state.dataActivities.url_1 ?
-                              <Card.Img onClick={() => this.setState({ isOpen: true })} variant="top" src={this.state.dataActivities.url_1} style={{maxHeight:300}} />
-                            : 
-                            
-                              <Card.Img variant="top" src={NO_IMAGE} style={{maxHeight:300}} />
-                            }
-                          </Card>
-                          <Card className="text-center"> 
-                            {this.state.dataActivities.url_2 ?
-                              <Card.Img onClick={() => this.setState({ isOpen: true })} variant="top" src={this.state.dataActivities.url_2} style={{maxHeight:300}} />
-                            : 
-                              <Card.Img variant="top" src={NO_IMAGE} style={{maxHeight:300}} />
-                            }
-                          </Card>
-                          <Card className="text-right">
-                            {this.state.dataActivities.url_3 ?
-                              <Card.Img onClick={() => this.setState({ isOpen: true })} variant="top" src={this.state.dataActivities.url_3} style={{maxHeight:300}} />
-                            : 
-                              <Card.Img variant="top" src={NO_IMAGE} style={{maxHeight:300}} />
-                            }
-                          </Card>
-                      </CardColumns>
+                      
                       <ContactForm uid={this.state.uid} type="actividad" id={this.state.idActividad} />
                       </TabPanel>
                       <TabPanel value={this.state.valueComment} index={1}>
