@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Menu from '../../container/Menu';
 import Helpers from '../../helpers/Helpers'
 import PropTypes from 'prop-types';
 import Footer from '../../container/Footer'
@@ -19,6 +18,7 @@ import Comments from '../elements/Comments'
 import TabPanel from '../elements/TabPanel'
 import { ALERT_ACTIVITY_HOSPEDAJE, MORE_INFO, NO_LOGIN } from '../../helpers/Messages';
 import Banner from '../elements/Banner';
+import SideMenu from '../../container/SideMenu';
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -153,7 +153,7 @@ class DetailActividades extends Component {
     return (
       <div style={{backgroundColor: '#f1f4f7'}}>
       <input type="text" ref={this.textInput} style={{position: 'absolute', top: 0, zIndex: -9999}} readOnly/>
-      <Menu />
+      <SideMenu backItem={true} />
       <div style={{width: '100%', paddingBottom: '5%'}}>
             <AppBar position="static" color="default">
               <Tabs

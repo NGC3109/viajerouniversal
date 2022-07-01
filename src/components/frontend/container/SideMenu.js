@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Drawer, Divider } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { Image, Col } from 'react-bootstrap';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
@@ -36,6 +36,7 @@ export default class SideMenu extends React.Component {
         notificacionesGeneralTotal: 0,
         visible: false, 
         placement: 'left',
+        backArrow: props.backItem
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -110,7 +111,15 @@ export default class SideMenu extends React.Component {
     return (
       <>
         <div style={{alignItems:'center', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', width: '100%', background: 'linear-gradient(90deg, rgba(16,93,149,1) 0%, rgba(26,50,82,1) 27%, rgba(27,47,78,1) 65%, rgba(16,93,149,1) 100%)', overflow: 'hidden'}}>
-            <Col style={{display: 'grid', justifyContent: 'center'}}><MenuOutlined onClick={this.showDrawer} style={{color: 'white', fontSize: 20, fontWeight: 'bold'}} /></Col>
+            <Col style={{display: 'grid', justifyContent: 'center'}}>
+              {
+                this.state.backArrow ? 
+                  <Link to={`/actividades/`}><ArrowLeftOutlined onClick={this.showDrawer}  style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}/></Link>
+                : 
+                  <MenuOutlined onClick={this.showDrawer} style={{color: 'white', fontSize: 20, fontWeight: 'bold'}} />
+              }
+              
+            </Col>
             <Col style={{display: 'grid', justifyContent: 'center'}}><Link to={`/`}><Image style={{width: 150, height: 50}} src="https://firebasestorage.googleapis.com/v0/b/viajeros-a267f.appspot.com/o/funciones%2Ficono.png?alt=media&token=d07959f5-224c-45c1-8189-fe1b6e801a18" /></Link></Col>
             <Col style={{display: 'grid', justifyContent: 'center'}}><Badge badgeContent={this.state.notificacionesGeneralTotal} color="error" onClick={this.handleClick}><NotificationsIcon style={{color: 'white', cursor: 'pointer'}}/></Badge></Col>
             <Popover
