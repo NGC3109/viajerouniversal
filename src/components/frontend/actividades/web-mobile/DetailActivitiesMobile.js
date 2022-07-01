@@ -182,8 +182,8 @@ class DetailActividades extends Component {
             >
               <TabPanel value={this.state.value} index={0}>
                 <div style={{marginTop: '1%'}}>
-                  <h5>{this.state.dataActivities.name}</h5>
-                  <h5>{this.state.dataActivities.region}</h5>
+                  <h5 style={{ fontWeight: 'bold' }}>{this.state.dataActivities.name}</h5>
+                  <p>{this.state.dataActivities.region}</p>
                   <div onClick={() => this.setState({ isOpen: true })} style={{
                         backgroundImage: "url(" + this.state.dataActivities.url + ")",
                         backgroundPosition: 'center',
@@ -333,10 +333,8 @@ class DetailActividades extends Component {
                 :
                   <Hospedajes data={this.state.dataHospedajes} /> 
                 }
-                
               </TabPanel>
               <TabPanel value={this.state.value} index={2}>
-                {/* <Actividades data={this.state.dataActivities} /> */}
                 <div className="alert alert-info">Proximamente</div>
               </TabPanel>
             </SwipeableViews>
