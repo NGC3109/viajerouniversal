@@ -11,6 +11,7 @@ import SideMenu from './SideMenu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Popover from '@material-ui/core/Popover';
 import Notificaciones from './Notificaciones'
+import { ACTIVIDADES, DESTINOS, ENTRAR, HOSPEDAJES, MIS_GRUPOS, MOCHILEROS } from '../helpers/Messages';
 
 class Menu extends Component {
     constructor(props){
@@ -133,12 +134,12 @@ class Menu extends Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Link to="/destinos" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>DESTINOS</Link>
-                        <Link to="/actividades" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>ACTIVIDADES</Link>
-                        <Link to="/hospedajes" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>HOSPEDAJES</Link>
-                        <Link to="/publicaciones" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>MOCHILEROS</Link>
+                        <Link to="/destinos" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>{ DESTINOS }</Link>
+                        <Link to="/actividades" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>{ ACTIVIDADES }</Link>
+                        <Link to="/hospedajes" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>{ HOSPEDAJES }</Link>
+                        <Link to="/publicaciones" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>{ MOCHILEROS }</Link>
                         <Badge badgeContent={this.state.notificaciones} color="error">
-                          <Link to="/groups" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>MIS GRUPOS</Link>
+                          <Link to="/groups" style={{paddingRight: '0.5rem', paddingLeft: '0.5rem', color: 'white', fontWeight: 'bold'}}>{ MIS_GRUPOS }</Link>
                         </Badge>
                     </Nav>
                     {
@@ -177,7 +178,7 @@ class Menu extends Component {
                         :
                         this.state.buttonShow ?
                           <Nav>
-                              <Nav.Link onClick={this.login}><Button className="btn btn-success">Entrar</Button></Nav.Link>
+                              <Nav.Link onClick={this.login}><Button className="btn btn-success">{ ENTRAR }</Button></Nav.Link>
                               {/* <Nav.Link onClick={this.loginFB}><Button className="btn btn-success">FB</Button></Nav.Link> */}
                           </Nav>
                         : null
