@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import ItemsActividades from './ItemsActividades'
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
-import Helpers from './../helpers/Helpers';
+import Helpers from '../../helpers/Helpers';
 import { Spinner, Form, Col } from 'react-bootstrap';
-import Footer from './../container/Footer'
-import Menu from '../container/Menu';
-import CarouselPage from './Carousel';
+import Footer from '../../container/Footer'
+import Menu from '../../container/Menu';
+import CarouselPage from '../Carousel';
 import Select from 'react-select';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Alert from 'react-bootstrap/Alert'
 
-class Actividades extends Component {
+class ActivityDesktop extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -193,4 +193,4 @@ class Actividades extends Component {
     );
   }
 }
-export default Actividades;
+export default ActivityDesktop;
