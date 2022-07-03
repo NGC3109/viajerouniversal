@@ -29,9 +29,6 @@ class Menu extends Component {
         }
         this.handleClick = this.handleClick.bind(this)
     }
-    UNSAFE_componentWillMount() {
-      document.title = 'Viajero Universal | Un solo Hogar'
-    }
     async componentDidMount(){
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {

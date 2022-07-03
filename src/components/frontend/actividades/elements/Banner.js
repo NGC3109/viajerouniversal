@@ -15,7 +15,7 @@ const Banner = ({ url, url_1, url_2, url_3, galeria }) => {
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        height: '160px'
+                        height: '250px'
                         }}>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ const Banner = ({ url, url_1, url_2, url_3, galeria }) => {
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
-                                height: '160px'
+                                height: '250px'
                                 }}>
                             </div>
                         </div>
@@ -41,7 +41,7 @@ const Banner = ({ url, url_1, url_2, url_3, galeria }) => {
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
-                                height: '160px'
+                                height: '250px'
                                 }}>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ const Banner = ({ url, url_1, url_2, url_3, galeria }) => {
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
-                                height: '160px'
+                                height: '250px'
                                 }}>
                             </div>
                         </div>

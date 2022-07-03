@@ -1,6 +1,9 @@
 import React from "react";
+import { login } from "./Login";
 
-export const NO_LOGIN = 'Para ver los comentarios debes iniciar sesión, es muy simple, solo dos clicks hacen falta!';
+
+export const NO_LOGIN = <div>Para ver los comentarios debes <strong onClick={login} style={{cursor: 'pointer', textDecoration: 'underline'}}>iniciar sesión</strong>, es muy simple, solo dos clicks hacen falta!</div>
+export const NO_IMAGE = 'https://firebasestorage.googleapis.com/v0/b/viajeros-a267f.appspot.com/o/funciones%2Fno-image2.png?alt=media&token=04203eaf-1fbd-439b-b2d1-88d227793338';
 export const MORE_INFO = (
     <div>
         <strong>Atención!</strong> Para ver más información debes registrarte, es muy fácil, no debes llenar formuarios, solo dos click hacen falta!.

@@ -21,6 +21,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Popover from '@material-ui/core/Popover';
 import Notificaciones from './Notificaciones'
 import { ACTIVIDADES, DESTINOS, ENTRAR, HOSPEDAJES, INICIO, MIS_GRUPOS, MOCHILEROS, SALIR } from '../helpers/Messages';
+import { login } from '../helpers/Login';
 
 export default class SideMenu extends React.Component {
   constructor(props){
@@ -88,13 +89,6 @@ export default class SideMenu extends React.Component {
       visible: false,
     });
   };
-  login = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithRedirect(provider).then(function(result) {
-    }).catch(function(error) {
-      console.log(error)
-    });
-  }
   handleClick = (event) => {
     this.setState({
       anchor: event.currentTarget
@@ -118,10 +112,13 @@ export default class SideMenu extends React.Component {
                 : 
                   <MenuOutlined onClick={this.showDrawer} style={{color: 'white', fontSize: 20, fontWeight: 'bold'}} />
               }
-              
             </Col>
             <Col style={{display: 'grid', justifyContent: 'center'}}><Link to={`/`}><Image style={{width: 150, height: 50}} src="https://firebasestorage.googleapis.com/v0/b/viajeros-a267f.appspot.com/o/funciones%2Ficono.png?alt=media&token=d07959f5-224c-45c1-8189-fe1b6e801a18" /></Link></Col>
-            <Col style={{display: 'grid', justifyContent: 'center'}}><Badge badgeContent={this.state.notificacionesGeneralTotal} color="error" onClick={this.handleClick}><NotificationsIcon style={{color: 'white', cursor: 'pointer'}}/></Badge></Col>
+            {
+            this.state.nameUser ? 
+              <Col style={{display: 'grid', justifyContent: 'center'}}><Badge badgeContent={this.state.notificacionesGeneralTotal} color="error" onClick={this.handleClick}><NotificationsIcon style={{color: 'white', cursor: 'pointer'}}/></Badge></Col>
+            : null
+            }
             <Popover
               id={id}
               open={pop}
@@ -140,7 +137,7 @@ export default class SideMenu extends React.Component {
             </Popover>
         </div>
         <Drawer
-          title={[<Link to={`/perfil/`}><Avatar alt={this.state.nameUser || 'I'} src={this.state.url || ''}  /></Link>,<Link to={`/perfil/`}><span style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>{this.state.nameUser || 'Invitad@'}</span></Link>]}
+          title={[<Link key={1} to={`/perfil/`}><Avatar alt={this.state.nameUser || 'I'} src={this.state.url || ''}  /></Link>,<Link key={2} to={`/perfil/`}><span style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>{this.state.nameUser || 'Invitad@'}</span></Link>]}
           placement={placement}
           closable={false}
           onClose={this.onClose}
@@ -244,8 +241,8 @@ export default class SideMenu extends React.Component {
                         direction="row"
                         justify="space-between"
                     >
-                        <Grid item xs={10} style={{cursor: 'pointer'}} onClick={this.login}>{ ENTRAR }</Grid>
-                        <Grid item xs={2} style={{cursor: 'pointer'}} onClick={this.login}><AccountBoxIcon /></Grid>
+                        <Grid item xs={10} style={{cursor: 'pointer'}} onClick={login}>{ ENTRAR }</Grid>
+                        <Grid item xs={2} style={{cursor: 'pointer'}} onClick={login}><AccountBoxIcon /></Grid>
                     </Grid>
                 </p>
             }
