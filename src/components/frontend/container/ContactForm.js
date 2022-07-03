@@ -225,10 +225,19 @@ export default function ContactForm(props) {
 }
   return (
     <div>
-        <div className="alert alert-info">
-            <strong>Atención!</strong> Si hay algo mal escrito, la información no es correcta o crees tener imágenes geniales para donar y recibir los respectivos créditos, favor no dudes en contactarte
-            con nosotros <strong onClick={handleClickOpen} style={{cursor: 'pointer'}}><u>PINCHANDO AQUÍ</u></strong> para corregir o actualizar imágenes, estarás ayudando a toda la comunidad.
-        </div>
+        <>
+            {
+                props.mobile ? 
+                <div onClick={handleClickOpen} style={{cursor: 'pointer', marginTop: 10}} className="alert alert-success">
+                    <strong><center>Donar imagenes</center></strong>
+                </div>
+                :
+                <div className="alert alert-info">
+                    <strong>Atención!</strong> Si hay algo mal escrito, la información no es correcta o crees tener imágenes geniales para donar y recibir los respectivos créditos, favor no dudes en contactarte
+                    con nosotros <strong onClick={handleClickOpen} style={{cursor: 'pointer'}}><u>PINCHANDO AQUÍ</u></strong> para corregir o actualizar imágenes, estarás ayudando a toda la comunidad.
+                </div>
+            }
+        </>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Contacto</DialogTitle>
           <Form onSubmit={handleSubmit(props.uid, need, handleClose)}>

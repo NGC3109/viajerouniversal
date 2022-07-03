@@ -163,16 +163,13 @@ class DetailActividades extends Component {
                 textColor="primary"
                 variant="fullWidth"
                 aria-label="full width tabs example"
+                
               >
                 <Tab label="ACTIVIDAD" {...this.a11yProps(0)} />{/* label="Actividades" */}
                 <Tab label="HOSPEDAJES" {...this.a11yProps(1)} />
                 <Tab label="AGENCIAS" {...this.a11yProps(2)} />
               </Tabs>
             </AppBar>
-            <SwipeableViews
-              index={this.state.value}
-              onChangeIndex={this.handleChangeIndex}
-            >
               <TabPanel value={this.state.value} index={0}>
                 <div style={{marginTop: '1%'}}>
                   <h5 style={{ fontWeight: 'bold' }}>{this.state.dataActivities.name}</h5>
@@ -238,7 +235,7 @@ class DetailActividades extends Component {
                       </div>
                       }
                       
-                      <ContactForm uid={this.state.uid} type="actividad" id={this.state.idActividad} />
+                      <ContactForm mobile={true} uid={this.state.uid} type="actividad" id={this.state.idActividad} />
                       </TabPanel>
                       <TabPanel value={this.state.valueComment} index={1}>
                             {this.state.uid ?
@@ -267,7 +264,7 @@ class DetailActividades extends Component {
                               </div>
                               :
                               <div className="alert alert-info">
-                                <strong>{NO_LOGIN}</strong>
+                                {NO_LOGIN}
                               </div>
                               }
                       </TabPanel>
@@ -284,7 +281,6 @@ class DetailActividades extends Component {
               <TabPanel value={this.state.value} index={2}>
                 <div className="alert alert-info">Proximamente</div>
               </TabPanel>
-            </SwipeableViews>
       </div>
       <Footer />
     </div>

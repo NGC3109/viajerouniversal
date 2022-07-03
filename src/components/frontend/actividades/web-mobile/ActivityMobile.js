@@ -4,7 +4,7 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import Helpers from '../../helpers/Helpers';
 import { Spinner, Form, Col } from 'react-bootstrap';
 import Footer from '../../container/Footer'
-import Menu from '../../container/Menu';
+import SideMenu from '../../container/SideMenu';
 import CarouselPage from '../Carousel';
 import Select from 'react-select';
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -120,7 +120,7 @@ class ActivityMobile extends Component {
     window.screen.width < 1024 ? widthScreen = 12 : widthScreen = null
     return (
       <div style={{backgroundColor:'#f1f4f7', height: '100%'}}>
-        <Menu />
+        <SideMenu backItem={false} />
         <CarouselPage widthScreen={widthScreen} />
         {this.state.ActivityIndicator_Loading ? 
             <MDBContainer>
@@ -139,23 +139,23 @@ class ActivityMobile extends Component {
                   <Form.Group as={Col} controlId="formGridPassword">
                       <Form.Label>Región</Form.Label>
                       <Form.Control as="select" name="region" onChange={this.sortedActivitiesRegion}>
-                        <option value="0"> -- Seleccionar Región -- </option>
-                        <option value="1">I de Tarapacá (Capital: Iquique)</option>
-                        <option value="2">II de Antofagasta (Capital: Antofagasta)</option>
-                        <option value="3">III de Atacama (Capital: Copiapó)</option>
-                        <option value="4">IV de Coquimbo (Capital: Coquimbo)</option>
-                        <option value="5">V de Valparaíso (Capital: Valparaíso)</option>
-                        <option value="6">VI del Libertador General Bernardo O'Higgins (Capital: Rancagua)</option>
-                        <option value="7">VII del Maule (Capital: Talca)</option>
-                        <option value="8">VIII de Biobío (Capital: Concepción)</option>
-                        <option value="9">IX de la Araucanía (Capital: Temuco)</option>
-                        <option value="10">X de Los Lagos (Capital: Puerto Montt)</option>
-                        <option value="11">XI de Aysén del General Carlos Ibañez del Campo (Capital: Coyhaique)</option>
-                        <option value="12">XII de Magallanes y de la Antártica Chilena (Capital: Punta Arenas)</option>
-                        <option value="13">RM Metropolitana de Santiago (Capital: Santiago)</option>
-                        <option value="14">XIV de Los Ríos (Capital: Valdivia)</option>
-                        <option value="15">XV de Arica y Parinacota (Capital: Arica)</option>
-                        <option value="16">XVI del Ñuble (Capital: Chillán)</option>
+                        <option value="0"> -- Región -- </option>
+                        <option value="1">I de Tarapacá</option>
+                        <option value="2">II de Antofagasta</option>
+                        <option value="3">III de Atacama</option>
+                        <option value="4">IV de Coquimbo</option>
+                        <option value="5">V de Valparaíso</option>
+                        <option value="6">VI O'Higgins</option>
+                        <option value="7">VII del Maule</option>
+                        <option value="8">VIII de Biobío</option>
+                        <option value="9">IX de la Araucanía</option>
+                        <option value="10">X de Los Lagos</option>
+                        <option value="11">XI de Aysén </option>
+                        <option value="12">XII de Magallanes</option>
+                        <option value="13">RM Metropolitana</option>
+                        <option value="14">XIV de Los Ríos</option>
+                        <option value="15">XV de Arica y Parinacota</option>
+                        <option value="16">XVI del Ñuble</option>
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridPassword">

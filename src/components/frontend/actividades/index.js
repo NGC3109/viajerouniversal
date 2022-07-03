@@ -7,8 +7,9 @@ class Activity extends Component {
   render(){
     if(isMobile){
       return <ActivityMobile />
-    }
-    if(isDesktop){
+    }else if(isDesktop){
+      return <ActivityDesktop />
+    }else{
       return <ActivityDesktop />
     }
   }
