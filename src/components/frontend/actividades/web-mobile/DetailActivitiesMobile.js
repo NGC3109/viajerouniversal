@@ -12,7 +12,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ContactForm from '../../container/ContactForm';
-import './../styles-custom.css';
 import Hospedajes from '../elements/Hospedajes'
 import Comments from '../elements/Comments'
 import TabPanel from '../elements/TabPanel'

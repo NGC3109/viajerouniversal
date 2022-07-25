@@ -9,21 +9,21 @@ import {
   } from "react-router-dom";
 import Publicaciones from './components/frontend/publicaciones/Publicaciones';
 import App from './App';
-import DetailDestinos from './components/frontend/destinos/detailDestinos';
 import DetailPublic from './components/frontend/publicaciones/detailPublic';
 import Perfil from './components/frontend/user/Perfil';
 import EditPublic from './components/frontend/user/publicaciones/editPublic';
 import Colaborativo from './components/frontend/colaborativo/Colaborativo';
 import PerfilPublico from './components/frontend/publico/PerfilPublico';
 import Actividades from './components/frontend/actividades/';
-import Detail from './components/frontend/actividades/indexDetail';
+import DetailActivity from './components/frontend/actividades/indexDetail';
 import Hospedajes from './components/frontend/hospedajes/Hospedajes.js';
 import DetailHospedajes from './components/frontend/hospedajes/DetailHospedajes.js';
 import EditarHospedaje from './components/frontend/user/hospedaje/EditHospedaje';
 import Terminos from './components/frontend/publico/Terminos';
 import Politicas from './components/frontend/publico/Politicas';
 import Groups from './components/frontend/groups/Groups';
-import Destinos from './components/frontend/destinos/Destinos';
+import Destinos from './components/frontend/destinos/';
+import DetailDestinos from './components/frontend/destinos/indexDetail';
 import Reglas from './components/frontend/publico/Reglas';
 
 ReactDOM.render(<HashRouter>
@@ -32,7 +32,7 @@ ReactDOM.render(<HashRouter>
                         <Route path="/publicaciones" component={Publicaciones} />
                         <Route path="/actividades" component={Actividades} />
                         <Route path="/destinos" component={Destinos} />
-                        <Route path="/actividad/:idActividad" component={Detail} />
+                        <Route path="/actividad/:idActividad" component={DetailActivity} />
                         <Route path="/destino/:idDestino" component={DetailDestinos} />
                         <Route path="/publicacion/:idPublic" component={DetailPublic} />
                         <Route path="/editarPublicacion/:idPublic" component={EditPublic} />
